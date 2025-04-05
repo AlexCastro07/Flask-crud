@@ -2,8 +2,6 @@ from app.models import db
 import uuid
 from app.models.perfil import Perfil  # al inicio del archivo
 
-perfil = db.relationship('Perfil', uselist=False, back_populates='usuario', cascade="all, delete-orphan")
-
 class Usuario(db.Model):
     __tablename__ = 'usuarios'
 
@@ -11,6 +9,7 @@ class Usuario(db.Model):
     nombre = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
+
 
     def __init__(self, nombre, email, password):
         self.nombre = nombre
@@ -27,3 +26,5 @@ class Usuario(db.Model):
             'email': self.email,
             'perfil': self.perfil.to_dict() if self.perfil else None
         }
+    
+    perfil = db.relationship('Perfil', uselist=False, back_populates='usuario', cascade="all, delete-orphan")

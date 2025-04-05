@@ -13,10 +13,10 @@ class Perfil(db.Model):
 
     usuario = db.relationship('Usuario', back_populates='perfil')
 
-def to_dict(self):
-    return {
-        'rol': self.rol,
-        'estado_rostro': self.estado_rostro,
-        'creado_en': self.creado_en.isoformat(),
-        'telefono': self.telefono
-    }
+    def to_dict(self):
+        return {
+            'rol': self.rol,
+            'estado_rostro': self.estado_rostro,
+            'creado_en': self.creado_en.isoformat(),
+            'telefono': self.telefono
+        }
