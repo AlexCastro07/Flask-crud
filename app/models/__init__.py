@@ -7,4 +7,5 @@ def init_app(app):
 
     with app.app_context():
         from app.models.usuario import Usuario
+        from app.models.perfil import Perfil
         db.create_all()        
