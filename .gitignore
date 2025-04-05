@@ -5,3 +5,4 @@ models_faces/
 *.pyc
 *.pyo
 *.log
+.qodo

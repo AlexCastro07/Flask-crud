@@ -1,5 +1,8 @@
 from app.models import db
 import uuid
+from app.models.perfil import Perfil  # al inicio del archivo
+
+perfil = db.relationship('Perfil', uselist=False, back_populates='usuario', cascade="all, delete-orphan")
 
 class Usuario(db.Model):
     __tablename__ = 'usuarios'
@@ -21,5 +24,6 @@ class Usuario(db.Model):
         return {
             'id': self.id,
             'nombre': self.nombre,
-            'email': self.email
+            'email': self.email,
+            'perfil': self.perfil.to_dict() if self.perfil else None
         }
